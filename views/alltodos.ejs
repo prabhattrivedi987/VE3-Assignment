@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>All ToDos</title>
+</head>
+<body>
+
+    <%-include('partials/navbar')%>
+
+      
+    <a  type="button" class="btn btn-primary m-3" href="http://localhost:8080/logoutuser">LogOut</a>
+
+    
+    
+    <table class="table my-4 container">
+        <thead>
+            <tr>
+                <th scope="col">Index</th>
+                <th scope="col">ToDo Title</th>
+                <th scope="col">Todo Description</th>
+                <th scope="col">Update ToDo</a></th>
+                <th scope="col">Delete ToDo</th>
+
+            </tr>
+        </thead>
+        <tbody>
+             <% allTodos.forEach((todo, index) => { %>
+                <tr>
+                    <th scope="row"><%= index + 1 %></th>
+                    <td><%= todo?.title %></td>
+                    <td><%= todo?.desc %></td>
+                    <td><a type="button" class="btn btn-primary" href="http://localhost:8080/update/<%= todo?._id%>">Update</a></td>
+                    <td><a type="button" class="btn btn-danger" href="http://localhost:8080/deletetodo/<%= todo?._id%>">Delete</a></td>
+                   
+                </tr>
+            <% }) %>            
+                
+        </tbody>
+
+    </table>
+</body>
+</html>
